@@ -12,7 +12,7 @@ days = 1:size(data_cases,1);
 
 % Set up fittype and options.
 ft = fittype( '(a*2^(x/Td))' );
-excludedPoints = excludedata( xData, yData, 'Domain', [1 15] );
+excludedPoints = excludedata( xData, yData, 'Domain', [1 18] );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Display = 'Off';
 opts.StartPoint = [xData(1) 3];

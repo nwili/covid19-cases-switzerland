@@ -8,11 +8,11 @@ days = 1:size(data_cases,1);
 
 
 %% Fit exponential curve to cases
-[xData, yData] = prepareCurveData( days, (cases)' );
+[xData, yData] = prepareCurveData( days+5, (cases)' );
 
 % Set up fittype and options.
 ft = fittype( '(a*2^(x/Td))' );
-excludedPoints = excludedata( xData, yData, 'Domain', [1 15] );
+excludedPoints = excludedata( xData, yData, 'Domain', [1 15]+5 );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Display = 'Off';
 opts.StartPoint = [xData(1) 3];
@@ -37,7 +37,7 @@ title('Cases')
 legend off
 
 subplot(2,1,2)
-plot(days(2:end),diff(cases),'--k')
+bar(days(2:end),diff(cases),'k')
 
 % %% Fit exponential curve to deaths
 % [xData, yData] = prepareCurveData( days, deaths' );
